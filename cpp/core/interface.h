@@ -18,7 +18,7 @@ private:
     std::unique_ptr<Core::Game> game;
 
 public:
-    Interface(EngineType engine_type, GameType game_type);
+    Interface();
 
     void game_loop();
 };

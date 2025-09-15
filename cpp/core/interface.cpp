@@ -5,20 +5,14 @@
 #include "utilities.h"
 #include "interface.h"
 #include "state.h"
-#include "../alpha_beta/alpha_beta.h"
-#include "../mcts/mcts.h"
-#include "../random_engine/random_engine.h"
-#include "../gomoku/gomoku.h"
+#include "config.h"
 
 
-Interface::Interface(EngineType engine_type, GameType game_type) {
-    if (engine_type == EngineType::AlphaBeta) engine = std::make_unique<AlphaBeta::Engine>();
-    else if (engine_type == EngineType::MCTS) engine = std::make_unique<MCTS::Engine>();
-    else engine = std::make_unique<Random::Engine>();
+Interface::Interface() {
+    Config config = Config(CONFIG_PATH);
 
-    if (game_type == GameType::Gomoku) game = std::make_unique<Gomoku::Game>(9, 9, 5);
-
-    std::cout << "INITIALIZED INTERFACE" << std::endl;
+    engine = std::move(config.get_engine());
+    game = std::move(config.get_game());
 }
 
 void Interface::game_loop() {

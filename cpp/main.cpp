@@ -5,7 +5,7 @@
 
 int main() {
 
-    Interface interface(EngineType::MCTS, GameType::Gomoku);
+    Interface interface = Interface();
     interface.game_loop();
 
     return 0;

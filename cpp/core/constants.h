@@ -8,6 +8,11 @@
 #include <cstdint>
 #include <cstdio>
 #include <string>
+#include "utilities.h"
+
+inline const std::string PROJECT_ROOT = get_project_root();
+
+const std::string CONFIG_PATH = PROJECT_ROOT + "/config.json";
 
 constexpr size_t MAX_MOVES = 4096;
 

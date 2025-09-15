@@ -1,0 +1,12 @@
+{
+  "game": {
+    "name": "Gomoku",
+    "height": 9,
+    "width": 9,
+    "win_amt": 5
+  },
+
+  "engine": {
+    "name": "MCTS"
+  }
+}

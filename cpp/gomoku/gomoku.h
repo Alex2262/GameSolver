@@ -37,8 +37,9 @@ private:
     int win_amt;
 
 public:
-    Game(int p_height, int p_width, int p_win_amt);
+    Game(const json& file);
 
+    void parse_config(const json& file);
     std::string name() override { return "Gomoku"; }
     std::unique_ptr<Core::State> new_initial_state() override;
 };

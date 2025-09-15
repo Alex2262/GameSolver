@@ -16,16 +16,15 @@ namespace Gomoku {
         return {action & 63, (action >> 6) & 63};
     }
 
-    Game::Game(int p_height, int p_width, int p_win_amt) {
-        height = p_height;
-        width = p_width;
-        win_amt = p_win_amt;
+    void Game::parse_config(const json& file) {
+        height = require_range<int>(file, "height", 1, MAX_SIZE);
+        width = require_range<int>(file, "width", 1, MAX_SIZE);
+        win_amt = require_range<int>(file, "win_amt", 1, MAX_SIZE);
+    }
 
+    Game::Game(const json& file) {
         assert(MAX_SIZE * MAX_SIZE <= MAX_MOVES);
-
-        if (height > MAX_SIZE || width > MAX_SIZE) {
-            throw std::runtime_error("Board dimensions too large");
-        }
+        parse_config(file);
     }
 
     std::unique_ptr<Core::State> Game::new_initial_state() {

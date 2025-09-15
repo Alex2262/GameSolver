@@ -7,6 +7,7 @@
 
 #include <string>
 #include "state.h"
+#include "../core/config_helper.h"
 
 
 namespace Core {

@@ -2,6 +2,7 @@
 // Created by Alexander Tian on 5/25/25.
 //
 
+#include <iostream>
 #include <sstream>
 #include "utilities.h"
 
@@ -30,4 +31,17 @@ std::string concat(std::vector<std::string>& elems, char delim, size_t start, si
     }
 
     return res;
+}
+
+std::string get_project_root() {
+    std::vector<std::string> tokens = split(std::string(__FILE__), '/');
+    std::string join;
+    for (int i = 0; i < tokens.size() - 3; i++) {
+        if (tokens[i].empty()) continue;
+        join += "/";
+        join += tokens[i];
+    }
+
+    std::cout << "PROJECT ROOT: " << join << std::endl;
+    return join;
 }
